@@ -1,0 +1,126 @@
+
+setup
+http://www.tutorialspoint.com/maven/maven_environment_setup.htm
+
+
+mvn -version
+
+
+
+
+mvn archetype:generate -DgroupId=com.nucleus -DartifactId=SpringSample1 -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+
+mvn archetype:generate -DgroupId=com.nucleus -DartifactId=CoreProject2 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+ 
+
+
+mvn compile
+
+mvn eclipse:eclipse
+
+mvn tomcat7:run
+
+
+mvn tomcat:run -Dmaven.tomcat.port=80
+
+
+
+=============================================
+mvn install:install-file -Dfile="D:\softwares\Jar Bank\Spring 3 Web Jar\ojdbc14.jar" -DgroupId=com.oracle -DartifactId=oracle -Dversion=10.2.0.2.0 -Dpackaging=jar
+==============================================
+
+mvn exec:java  com.nucleus.prj1.App
+
+
+<build>
+  <plugins>
+  <plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>exec-maven-plugin</artifactId>
+  <version>1.1</version>
+  <executions><execution>
+    <goals><goal>java</goal></goals>
+  </execution></executions>
+  <configuration>
+    <mainClass>com.nucleus.prj1.App</mainClass>
+  </configuration>
+</plugin>
+  </plugins>
+  </build>
+
+
+cd project
+mvn clean package
+
+mvn clean install
+
+mvn clean install -DskipTests
+
+cd where pom.xml>
+mvn compile
+mvn package
+
+
+cd classes> java com.nucleus.prj1.App
+============================
+<plugin>
+  <groupId>org.eclipse.jetty</groupId>
+  <artifactId>jetty-maven-plugin</artifactId>
+  <version>9.2.2.v20140723</version>
+</plugin>
+==========================================
+<build>
+    <finalName>MavenSpringHibernate</finalName>
+     <plugins>
+    <plugin>
+			<groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat7-maven-plugin</artifactId>
+  <version>2.1</version>
+				<configuration>
+					<url>http://localhost:8080/MavenSpringHibernate</url>
+	<server>mytomcat</server>
+					<path>/MavenSpringHibernate</path>
+				</configuration>
+			</plugin>
+			<!-- <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.10</version>
+        <configuration>
+          <scanIntervalSeconds>10</scanIntervalSeconds>
+          <connectors>
+            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+              <port>8080</port>
+              <maxIdleTime>60000</maxIdleTime>
+            </connector>
+          </connectors>
+        </configuration>
+      </plugin> -->
+			</plugins>
+  </build>
+
+-----------------------------------------------
+mvn tomcat7:run
+
+mvn jetty:run
+mvn clean install tomcat7:run
+
+
+
+=================================================
+In Eclispe
+
+mvn eclipse:eclipse -Dwtpversion=2.0
+
+
+Project->Build Path=Libraries
+Add Variable->configure variable
+
+
+name=M2_REPO
+value=/m2/repository
+
+
+
+http://javawebtutor.com/articles/spring/spring-mvc-hibernate-crud-example.php

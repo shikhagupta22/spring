@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc     
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  
+http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+http://www.springframework.org/schema/context  
+http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+http://www.springframework.org/schema/tx  
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd" > 
+<context:annotation-config></context:annotation-config> 
+<bean id="vendor" class="com.nucleus.prac.Vendor">
+<property name="vId" value="${vendor.id}"></property>
+<property name="vName" value="Kausar"></property>
+
+</bean>
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+<property name="locations">
+<list>
+<value>strings.properties</value>
+</list>
+</property>
+</bean>
+  
+ <bean id="messagesource" class="org.springframework.context.support.ResourceBundleMessageSource">
+<property name="basenames">
+<list>
+<value>strings</value>
+</list>
+</property>
+</bean>
+<bean id="bean2" class="com.nucleus.prac.Greet">
+</bean> 
+<bean id="vendordao" class="com.newPack.VendorDAO">
+	
+	</bean>
+	
+		
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />  		<property name="url" value="jdbc:oracle:thin:@10.1.50.198:1521:orcl" />
+		<property name="username" value="sh" />
+		<property name="password" value="sh" />
+	</bean>
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+<property name="dataSource" ref="dataSource"></property>  
+</bean>
+</beans>
